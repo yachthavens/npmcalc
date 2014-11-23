@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<drugs>http://localhost:51415/Calculator1.html
+  <drug title="Co-careldopa (Sinemet)">
+    <dose value ='2'>12.5/50 BD</dose>
+    <dose value ='4'>12.5/50 TDS</dose>
+    <dose value ='6'>12.5/50 QDS</dose>
+    <dose value ='8'>25/100 TDS</dose>
+    <dose value ='10'>25/100 QDS</dose>
+    <dose value ='12'>37.5/150 TDS</dose>
+    <dose value ='16'>37.5/150 QDS</dose>
+    <dose value ='16'>50/200 TDS</dose>
+    <dose value ='16'>50/200 QDS</dose>
+    <dose value ='2'>25/100 CR</dose>
+    <dose value ='4'>50/200 CR</dose>
+  </drug>
+
+  <drug title="Co-beneldopa (Madopar)">
+    <dose value ='2'>12.5/50 BD</dose>
+    <dose value ='4'>12.5/50 TDS</dose>
+    <dose value ='6'>12.5/50 QDS</dose>
+    <dose value ='8'>25/100 TDS</dose>
+    <dose value ='10'>25/100 QDS</dose>
+    <dose value ='12'>37.5/150 TDS</dose>
+    <dose value ='16'>37.5/150 QDS</dose>
+    <dose value ='16'>50/200 TDS</dose>
+    <dose value ='16'>50/200 QDS</dose>
+    <dose value ='2'>25/100 CR</dose>
+    <dose value ='4'>50/200 CR</dose>
+  </drug>
+
+  <drug title="Stalevo">
+    <dose value ='6'>50/12.5/200 TDS</dose>
+    <dose value ='10'>100/25/200 TDS</dose>
+    <dose value ='14'>100/25/200 QDS</dose>
+    <dose value ='16'>150/37.5/200 TDS</dose>
+    <dose value ='16'>200/50/200 TDS</dose>
+  </drug>
+
+  <drug title="Pramipexole">
+    <dose value ='2'>0.125mg TDS</dose>
+    <dose value ='4'>0.25mg TDS</dose>
+    <dose value ='6'>0.5mg TDS</dose>
+    <dose value ='8'>0.75mg TDS</dose>
+    <dose value ='12'>1mg TDS</dose>
+    <dose value ='14'>1.25mg TDS</dose>
+    <dose value ='16'>1.5mg TDS</dose>
+  </drug>
+
+  <drug title="Ropinirole (Requip)">
+    <dose value ='2'>Starter Pack</dose>
+    <dose value ='4'>1mg TDS</dose>
+    <dose value ='6'>2mg TDS</dose>
+    <dose value ='8'>3mg TDS</dose>
+    <dose value ='12'>4mg TDS</dose>
+    <dose value ='14'>6mg TDS</dose>
+    <dose value ='16'>8mg TDS</dose>
+  </drug>
+
+  <drug title="Requip XL">
+    <dose value ='4'>4mg/day</dose>
+    <dose value ='6'>6mg/day</dose>
+    <dose value ='8'>8mg/day</dose>
+    <dose value ='12'>12mg/day</dose>
+    <dose value ='14'>16mg/day</dose>
+    <dose value ='16'>14mg/day</dose>
+  </drug>
+
+  <drug title="Rotigotine Patch">
+    <dose value ='2'>2mg/24hrs</dose>
+    <dose value ='4'>4mg/24hrs</dose>
+    <dose value ='6'>6mg/24hrs</dose>
+    <dose value ='8'>8mg/24hrs</dose>
+    <dose value ='10'>10mg/24hrs</dose>
+    <dose value ='12'>12mg/24hrs</dose>
+    <dose value ='14'>14mg/24hrs</dose>
+    <dose value ='16'>16mg/24hrs</dose>
+  </drug>
+  
+</drugs>

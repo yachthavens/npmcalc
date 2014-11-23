@@ -1,0 +1,384 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="scripts/jquery-1.10.2.min.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="nhs.css" />
+
+</head>
+<body>
+
+    <div id="header">
+        <div class="sys_wrap sys_clearfix">
+            <div class="sys_left">
+                Guideline for the OPTIMAL management of inpatients with Parkinson's Disease
+            </div>
+            <!--<div class="sys_right" style="WIDTH: 316px">
+                <a href="/Index.html" class="sys_0 sys_t20" title="University Hospital Southampton NHS Foundation Trust"><img src="/img/uhsnhslogo.gif" width="316" height="36" alt="University Hospital Southampton NHS Foundation Trust" /></a><span style="display:none">|</span>
+            </div>-->
+        </div>
+    </div>
+
+
+    <div id="nav">
+        <div class="sys_wrap">
+            <ul class="sys_clearfix">
+                <li class="sys_home">
+                    <a href="/Index.html" class="sys_0 sys_t20">Home</a>
+                </li>
+
+                <li><a href="/Calculator1.html">Calculator 1</a></li>
+              <li><a href="/Calculator2.html">Calculator 2</a></li>
+              <li><a href="/Calculator3.html">Calculator 3</a></li>
+
+            </ul>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            var results = [];
+            var drugs = [];
+            //var timings = {'00:00':1, '00:30':2, '01:00':3, '01:30':4, '02:00':5, '02:30':6, '03:00':7, '03:30':8, '04:00':9, '04:30':10, '05:00':11, '05:30':12, '06:00':13, '06:30':14, '07:00':15, '07:30':16, '08:00':17, '08:30':18, '09:00':19, '09:30':20, '10:00':21, '10:30':22, '11:00':23, '11:30':24, '12:00':25, '12:30':26, '13:00':27, '13:30':28, '14:00':29, '14:30':30, '15:00':31, '15:30':32, '16:00':33, '16:30':34, '17:00':35, '17:30':36, '18:00':37, '18:30':38, '19:00':39, '19:30':40, '20:00':41, '20:30':42, '21:00':43, '21:30':44, '22:00':45, '22:30':46, '23:00':47, '23:30':48};
+            var timings = { "00:00": 1, "00:30": 2, "01:00": 3, "01:30": 4, "02:00": 5, "02:30": 6, "03:00": 7, "03:30": 8, "04:00": 9, "04:30": 10, "05:00": 11, "05:30": 12, "06:00": 13, "06:30": 14, "07:00": 15, "07:30": 16, "08:00": 17, "08:30": 18, "09:00": 19, "09:30": 20, "10:00": 21, "10:30": 22, "11:00": 23, "11:30": 24, "12:00": 25, "12:30": 26, "13:00": 27, "13:30": 28, "14:00": 29, "14:30": 30, "15:00": 31, "15:30": 32, "16:00": 33, "16:30": 34, "17:00": 35, "17:30": 36, "18:00": 37, "18:30": 38, "19:00": 39, "19:30": 40, "20:00": 41, "20:30": 42, "21:00": 43, "21:30": 44, "22:00": 45, "22:30": 46, "23:00": 47, "23:30": 48 };
+
+            drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 12.5/50', nonNgValue: '2' });
+            drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 25/100', nonNgValue: '2' });
+            drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 37.5/150', nonNgValue: '2' });
+            drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 50/200', nonNgValue: '2' });
+
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 12.5/50 BD', nonNgValue: '2' });
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 12.5/50 TDS', nonNgValue: '4' });
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 12.5/50 QDS', nonNgValue: '6' });
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 25/100 TDS', nonNgValue: '8' });
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 25/100 QDS', nonNgValue: '10' });
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 37.5/150 TDS', nonNgValue: '12' });
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 37.5/150 QDS', nonNgValue: '16' });
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 50/200 TDS', nonNgValue: '16' });
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 50/200 QDS', nonNgValue: '16' });
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 25/100 CR', nonNgValue: '2' });
+            //drugs.push({ id: 'Madopar Dispersible - same dose', value: 'Co-Beneldopa (Madopar) - 50/200 CR', nonNgValue: '4' });
+
+            //drugs.push({ id: 'Madopar Dispersible 12.5/50', value: 'Co-Careldopa (Sinemet) - 12.5/50', nonNgValue: '' });
+            //drugs.push({ id: 'Madopar Dispersible 25/100', value: 'Co-Careldopa (Sinemet) - 10/100', nonNgValue: '' });
+            //drugs.push({ id: 'Madopar Dispersible 25/100', value: 'Co-Careldopa (Sinemet) - 25/100', nonNgValue: '' });
+            //drugs.push({ id: 'Madopar Dispersible 2 x 25/100', value: 'Co-Careldopa (Sinemet) - 25/250', nonNgValue: '' });
+
+            //drugs.push({ id: 'Madopar Dispersible 12.5/50', value: 'Stalevo - 50/12.5/200' });
+            //drugs.push({ id: 'Madopar Dispersible 25/100', value: 'Stalevo - 100/25/200' });
+            //drugs.push({ id: 'Madopar Dispersible 12.5/50 + 25/100', value: 'Stalevo - 150/37.5/200' });
+            //drugs.push({ id: 'Madopar Dispersible 2 x 25/100', value: 'Stalevo - 200/50/200' });
+
+            //drugs.push({ id: 'Madopar Dispersible 25/100 (30% dose reduction recommended)', value: 'Half Sinemet CR - 25/100' });
+            //drugs.push({ id: 'Madopar Dispersible 2 x 25/100 (30% dose reduction recommended)', value: 'Sinemet CR - 50/200' });
+
+            //drugs.push({ id: 'Can be safely omitted', value: 'Entacapone' });
+
+            //drugs.push({ id: 'Can be safely omitted', value: 'Selegiline/Rasagiline' });
+
+            //drugs.push({ id: 'Amantadine syrup', value: 'Amantadine' });
+
+            //drugs.push({ id: 'Continue usual regime and consult PD specialist. <br> Call Apo-Go helpline for advice out-of-hours: 0844 880 1327', value: 'Apomorphine' });
+
+            //drugs.push({ id: 'Continue usual regime and consult PD specialist.', value: 'DuoDopa' });
+
+            //drugs.push({ id: 'Can be crushed (unlicenced use)', value: 'Pramipexole (Mirapexin)' });
+
+            //drugs.push({ id: 'Can be crushed (unlicenced use)', value: 'Ropinirole (Requip)' });
+
+            //// drugs.push({ id: 'Divide dose by 3 and administer as Ropinirole TDS crushed. (e.g. 24mg XL = 8mg Ropinirole TDS)', value: 'Requip XL' });
+            //drugs.push({ id: 'this should not be seen', value: 'Requip XL 2mg' });
+            //drugs.push({ id: 'this should not be seen', value: 'Requip XL 4mg' });
+            //drugs.push({ id: 'this should not be seen', value: 'Requip XL 6mg' });
+            //drugs.push({ id: 'this should not be seen', value: 'Requip XL 8mg' });
+            //drugs.push({ id: 'this should not be seen', value: 'Requip XL 12mg' });
+            //drugs.push({ id: 'this should not be seen', value: 'Requip XL 16mg' });
+            //drugs.push({ id: 'this should not be seen', value: 'Requip XL 20mg' });
+            //drugs.push({ id: 'this should not be seen', value: 'Requip XL 24mg' });
+
+            //drugs.push({ id: 'Continue', value: 'Rotigotine (Neupro patch)' });
+
+
+            var i;
+            //populate the drug combo
+            for (i = 0; i < drugs.length; i++) {
+              $("#cmbdrug").append("<option key='" + drugs[i].id + "' nonNgValue='" + drugs[i].nonNgValue + "' >" + drugs[i].value + "</option>");
+            }
+
+            //populate the timings combo
+            //for (i = 0; i < timings.length; i++) {
+            //   $("#cmbtimings").append("<option key='" + timings[i].id + "'>" + timings[i].value + "</option>");
+           // }
+
+            var val, text;
+            for (text in timings) {
+                val = timings[text];
+                $('<option/>').val(val).text(text).appendTo($('#cmbtimings'));
+            };
+
+
+
+            //add row
+            $('#addrow').click(function () {
+                var trcon = '<tr><td>' + $("#cmbdrug").val() + '</td><td>' + $("#cmbtimings :selected").text() + '</td></tr>';
+                $('#tbldrugs > tbody').append(trcon);
+
+                if ($("#cmbdrug").val() == 'Requip XL 2mg')
+                {
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 0.75mg", timeIndex: 17, timeValue: '08:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 0.75mg", timeIndex: 29, timeValue: '14:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 0.75mg", timeIndex: 45, timeValue: '22:00' });
+                }
+                else if ($("#cmbdrug").val() == 'Requip XL 4mg')
+                {
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 1mg", timeIndex: 17, timeValue: '08:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 1mg", timeIndex: 29, timeValue: '14:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 1mg", timeIndex: 45, timeValue: '22:00' });
+                }
+                else if ($("#cmbdrug").val() == 'Requip XL 6mg') {
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 2mg", timeIndex: 17, timeValue: '08:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 2mg", timeIndex: 29, timeValue: '14:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 2mg", timeIndex: 45, timeValue: '22:00' });
+                }
+                else if ($("#cmbdrug").val() == 'Requip XL 8mg') {
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 3mg", timeIndex: 17, timeValue: '08:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 3mg", timeIndex: 29, timeValue: '14:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 3mg", timeIndex: 45, timeValue: '22:00' });
+                }
+                else if ($("#cmbdrug").val() == 'Requip XL 12mg') {
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 4mg", timeIndex: 17, timeValue: '08:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 4mg", timeIndex: 29, timeValue: '14:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 4mg", timeIndex: 45, timeValue: '22:00' });
+                }
+                else if ($("#cmbdrug").val() == 'Requip XL 16mg') {
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 5mg", timeIndex: 17, timeValue: '08:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 5mg", timeIndex: 29, timeValue: '14:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 5mg", timeIndex: 45, timeValue: '22:00' });
+                }
+                else if ($("#cmbdrug").val() == 'Requip XL 20mg') {
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 7mg", timeIndex: 17, timeValue: '08:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 7mg", timeIndex: 29, timeValue: '14:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 7mg", timeIndex: 45, timeValue: '22:00' });
+                }
+                else if ($("#cmbdrug").val() == 'Requip XL 24mg') {
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 8mg", timeIndex: 17, timeValue: '08:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 8mg", timeIndex: 29, timeValue: '14:00' });
+                    results.push({ drugfrom: $("#cmbdrug").val(), drugto: "Ropinirole crushed 8mg", timeIndex: 45, timeValue: '22:00' });
+                }
+                else {
+                  results.push({
+                    drugfrom: $("#cmbdrug").val(),
+                    drugto: $("#cmbdrug").children(":selected").attr("key"),
+                    drugtoNonNg: $("#cmbdrug").children(":selected").attr("nonNgValue"),
+                    timeIndex: $("#cmbtimings :selected").val(),
+                    timeValue: $("#cmbtimings :selected").text()
+                  });
+                };
+            });
+
+            //reset
+            $('#reset').click(function () {
+              $("#lblresultsNonNg").empty();
+                $('#tbldrugs > tbody').empty();
+                $("#tblresults tr").remove();
+
+                results = [];
+           
+            });
+
+
+            function sortbytimeindex(a, b) {
+                return a.timeIndex - b.timeIndex;
+            }
+          
+
+            //calculate the total
+            $('#calculate').click(function () {
+                $("#tblresults thead").remove();
+                $('#tblresults').append("<thead><tr><th class='th'>Patient's Original Regime</th><th class='th'>Patient's New NG Regime</th><th>Time</th></tr></thead>");
+
+                results.sort(sortbytimeindex);
+
+                for (var i = 0, l1 = results.length; i < l1; i++) {
+                  $('#tblresults').append("<tr><td>" + results[i].drugfrom + "</td><td>" + results[i].drugto + "</td><td>" + results[i].timeValue + "</td></tr>");
+                }
+
+
+                $("#lblresultsNonNg").empty();
+                var total = 0;
+
+              //Co-Beneldopa (Madopar) - 12.5/50
+                var totalBeneldopa1 = 0;
+              //Co-Beneldopa (Madopar) - 25/100
+                var totalBeneldopa2 = 0;
+              //Co-Beneldopa (Madopar) - 37.5/150
+                var totalBeneldopa3 = 0;
+              //Co-Beneldopa (Madopar) - 50/200
+                var totalBeneldopa4 = 0;
+
+
+
+
+              for (var i = 0, l2 = results.length; i < l2; i++) {
+
+
+                switch(results[i].drugfrom) {
+                  case 'Co-Beneldopa (Madopar) - 12.5/50':
+                    totalBeneldopa1 = totalBeneldopa1 + 1;
+                    break;
+                  case 'Co-Beneldopa (Madopar) - 25/100':
+                    totalBeneldopa2 = totalBeneldopa2 + 1;
+                  case 'Co-Beneldopa (Madopar) - 37.5/150':
+                    totalBeneldopa3 = totalBeneldopa3 + 1;
+                  case 'Co-Beneldopa (Madopar) - 50/200':
+                    totalBeneldopa4 = totalBeneldopa4 + 1;
+                    break;
+                } 
+              }
+
+
+              if (totalBeneldopa1 == 1) {
+                total = total + 2;
+              }
+              if (totalBeneldopa1 == 2) {
+                total = total + 2;
+              }
+              if (totalBeneldopa1 == 3) {
+                total = total + 4;
+              }
+              if (totalBeneldopa1 == 4) {
+                total = total + 6;
+              }
+
+              if (totalBeneldopa2 == 1) {
+                total = total + 2;
+              }
+              if (totalBeneldopa2 == 2) {
+                total = total + 6;
+              }
+              if (totalBeneldopa2 == 3) {
+                total = total + 8;
+              }
+              if (totalBeneldopa2 == 4) {
+                total = total + 10;
+              }
+
+              if (totalBeneldopa3 == 1) {
+                total = total + 4;
+              }
+              if (totalBeneldopa3 == 2) {
+                total = total + 8;
+              }
+              if (totalBeneldopa3 == 3) {
+                total = total + 12;
+              }
+              if (totalBeneldopa3 == 4) {
+                total = total + 16;
+              }
+
+              if (totalBeneldopa4 == 1) {
+                total = total + 4;
+              }
+              if (totalBeneldopa4 == 2) {
+                total = total + 8;
+              }
+              if (totalBeneldopa4 == 3) {
+                total = total + 12;
+              }
+              if (totalBeneldopa4 == 4) {
+                total = total + 16;
+              }
+
+
+
+                if (total > 16) {
+                  total = 16;
+                }
+
+
+         
+
+              $("#lblresultsNonNg").append("<table>");
+              $("#lblresultsNonNg").append("<tr><td>Convert to: Rotigotine Patch " + total + "mg/24hrs");
+              $("#lblresultsNonNg").append("<tr><td>Please note, maximum dose of Rotigotine is 16mg in 24 hours.<br> Do not cut patches to achieve required dose.</td></tr></table>");
+
+            });
+        });
+    </script>
+    <div class="sys_wrap" id="footer">
+        <div class="sys_clearfix">
+            <div style="float:right;margin-right:10px">
+                <a href="Index.html">Return to Guideline</a>
+            </div>
+            
+            <div>
+                <div>
+                    <div>
+                    <h2>Combined Calculator for patients who are Nil by Mouth</h2>
+                    </div>
+                </div>
+                <div>
+                    <p>Select your patient's usual medication regime and timings from the drop down menus below.<br /> After each selection click "Add Drug". When you
+                    have entered all of the Parkinsons medication in their regime click "Calculate" to see what to prescribe.
+                    </p>
+                    <p>
+                    Click "Reset" to clear all selections.
+                    </p>
+                </div>
+                <div style="float:left">
+                    <div style="float:left">
+                        <h3>Drug:</h3><select id="cmbdrug"></select>
+                    </div>
+                  <div style="float:left">
+                    <h3>Time:</h3><select id="cmbtimings"></select>
+                  </div>
+                  <div style="float: left; clear: both">
+                    <table class="tbldrugs">
+                      <tr>
+                        <button id="addrow">Add Drug</button>
+                      </tr>
+                      <tr>
+                        <button id="calculate">Calculate</button>
+                      </tr>
+                      <tr>
+                        <button id="reset">Reset</button>
+                      </tr>
+                    </table>
+                  </div>
+                  
+                  <div style="float: left;clear: both">
+                    <h2>Patients with NG Tube</h2>
+                  </div>
+                  <table class="tbldrugs" width="640" border="1" cellpadding="0" cellspacing="0" id="tbldrugs">
+                  <thead id="theads">
+                    <tr>
+                      <th class="th" contenteditable>Patient's Usual Drug / Dosage</th>
+                      <th class="th" contenteditable>Time</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbody"></tbody>
+
+                </table>
+              
+                  <table class="tbldrugs" width="640" border="0" cellpadding="0" cellspacing="0" id="tblresults">
+                  </table>
+                  
+                  <div>
+                    <h2>Patients without NG Tube</h2>
+                  </div>
+                  <div id="lblresultsNonNg">
+                    No results
+                  </div>
+              </div>
+              
+          
+
+            </div>
+            </div>
+        </div>
+</body>
+
+</html>

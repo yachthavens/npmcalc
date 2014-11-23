@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="scripts/jquery-1.10.2.min.js">
+    </script>
+    <link rel="stylesheet" type="text/css" href="nhs.css" />
+
+</head>
+<body>
+
+    <div id="header">
+        <div class="sys_wrap sys_clearfix">
+            <div class="sys_left">
+                Guideline for the OPTIMAL management of inpatients with Parkinson's Disease
+            </div>
+            <!--<div class="sys_right" style="WIDTH: 316px">
+                <a href="/Index.html" class="sys_0 sys_t20" title="University Hospital Southampton NHS Foundation Trust"><img src="/img/uhsnhslogo.gif" width="316" height="36" alt="University Hospital Southampton NHS Foundation Trust" /></a><span style="display:none">|</span>
+            </div>-->
+        </div>
+    </div>
+
+
+    <div id="nav">
+        <div class="sys_wrap">
+            <ul class="sys_clearfix">
+                <li class="sys_home">
+                    <a href="/Index.html" class="sys_0 sys_t20">Home</a>
+                </li>
+                <li><a href="/Calculator1.html">Calculator 1</a></li>
+              <li><a href="/Calculator2.html">Calculator 2</a></li>
+              <li><a href="/Calculator3.html">Calculator 3</a></li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+          var results = [];
+          var resultsWithNg = [];
+            var drug_data; // variable to hold data in once it is loaded
+            $.get('drugs.xml', function (data) { 
+                drug_data = data; 
+                var drugslist = $('#cmbdrug'); 
+                $('drug', drug_data).each(function () { 
+                    $('<option>').text($(this).attr('title')).appendTo(drugslist);
+                });
+            }, 'xml'); 
+
+            $('#cmbdrug').change(function () { 
+                var val = $(this).val(); 
+                var frequencylist = $('#cmbfreq').empty(); 
+                $('drug', drug_data).filter(function () { 
+                    return val == $(this).attr('title');
+                }).find('dose').each(function () {
+                  frequencylist.append("<option ngValue='"+$(this).attr('ngValue')+"'  value='" + $(this).attr('value') + "' text='" + $(this).text() + "'>" + $(this).text() + "</option>")
+                });
+            });
+
+            //add row
+            $('#addrow').click(function () {
+                var trcon = '<tr><td class="td">' + $("#cmbdrug").val() + '</td><td class="td">' + $("#cmbfreq").children(":selected").attr("text") + '</td></tr>';
+                $('#tbldrugs > tbody').append(trcon);
+                results.push({ result: $("#cmbfreq").children(":selected").attr("value") });
+                resultsWithNg.push({ result: $("#cmbfreq").children(":selected").attr("ngValue") });
+                console.log($("#cmbfreq").children(":selected").attr("ngValue"));
+            });
+
+            //reset
+            $('#reset').click(function () {
+                $('#lblresults').empty();
+                $('#tbldrugs > tbody').empty();
+                results = [];
+            });
+
+            //calculate the total
+            $('#calculate').click(function () {
+                $("#lblresults").empty();
+                var total = 0;
+                for (var i = 0, l = results.length; i < l; i++) {
+                    total = total + parseInt(results[i].result);
+                }
+                if (total > 16) {
+                    total = 16;
+                }
+                $("#lblresults").append(" Convert to: Rotigotine Patch " + total + "mg/24hrs <br><br>");
+                $("#lblresults").append("Please note, maximum dose of Rotigotine is 16mg in 24 hours.<br> Do not cut patches to achieve required dose.");
+
+            });
+
+
+        });
+    </script>
+    <div class="sys_wrap" id="footer">
+        <div class="sys_clearfix">
+            <div style="float:right;margin-right:10px">
+                <a href="Index.html">Return to Guideline</a>
+            </div>
+            <div>
+                <h2>Calculator for patients who cannot have an NG tube or with GI failure</h2>
+                <div style="margin-bottom:10px">
+                    <p>
+                        Select your patient's usual medication regime and frequency from the drop down menus below.<br /> After each selection click "Add Drug".<br /> When you
+                        have entered all of the Parkinsons medication in their regime click, "Calculate" to see what to convert it to.
+                    </p>
+                    <p>
+                        Click "Reset" to clear all selections.
+                    </p>
+                </div>
+             
+                <div style="float:left">
+                    <div style="float:left">
+                        <h3>Drug:</h3><select id="cmbdrug"><option value='0'>----------</option></select>
+                    </div>
+                    <div style="float:left">
+                        <h3>Frequency:</h3><select id="cmbfreq"><option value='0'>----------</option></select>
+                    </div>
+                    <br />
+                    <button id="addrow">Add Drug</button>
+                    <button id="calculate">Calculate</button>
+                    <button id="reset">Reset</button>
+                </div>
+
+
+
+                <div id="drugs">
+                    <table class="tbldrugs" width="640" border="1" cellpadding="0" cellspacing="0" id="tbldrugs">
+
+                        <thead id="theads">
+                            <tr>
+                                <th class="th" contenteditable>Original Drug</th>
+                                <th class="th" contenteditable>Frequency</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody"></tbody>
+
+                    </table>
+                </div>
+              <div id="lblresults">
+
+              </div>
+              
+ 
+            </div>
+            </div>
+        </div>
+
+</body>
+</html>
